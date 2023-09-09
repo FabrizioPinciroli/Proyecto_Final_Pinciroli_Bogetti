@@ -16,3 +16,19 @@ def listar_socios(req):
     lista = Socio.objects.all()
 
     return render(req, "lista_socios.html", {"lista_socios": lista})
+
+
+def inicio(req):
+    return render(req, "inicio.html")
+
+
+def socio(req):
+    return render(req, "socio.html")
+
+
+def evento(req):
+    return render(req, "evento.html")
+
+
+def deporte(req):
+    return render(req, "deporte.html")

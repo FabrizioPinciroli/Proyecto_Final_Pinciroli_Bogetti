@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Club Atletico Rosario Central</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+</head>
+
+
+<body>
+    {% include 'navbar.html' %}
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                    src="https://th.bing.com/th/id/R.ea62b7ae60469140a769ad726afa9b5b?rik=A%2fDOStpyZCs5PA&pid=ImgRaw&r=0"
+                    alt="..." /></div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light">Club Atletico Rosario Central</h1>
+                <p>Bienvenidos a la sede virtual de Rosario Central.<br> Aquí podrá asociarse, consultar los deportes y
+                    eventos disponibles!</p>
+            </div>
+        </div>
+
+        {% block ContenidoQueCambia %}
+
+        {% endblock ContenidoQueCambia %}
+
+
+
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Asociate</h2>
+                        <p class="card-text">Asociate acá para poder disfrutar de los beneficios de ser parte del club
+                            mas grande del interior de Argentina!</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Asociate acá</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Deportes</h2>
+                        <p class="card-text">Consultá acerca de los deportes disponibles para vos.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Eventos</h2>
+                        <p class="card-text">Entrá y enterate de los proximos eventos y partidos que se aproximan!</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-4 px-lg-5">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
