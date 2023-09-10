@@ -6,7 +6,8 @@ urlpatterns = [
     path('socio/', socio, name="Socio"),
     path('deporte/', deporte, name="Deporte"),
     path('evento/', evento, name="Evento"),
-    path('lista-socios/', listar_socios),
+    path('lista-socios/', listar_socios, name="listaSocios"),
+    path('socio-Formulario/', socioFormulario, name="socioFormulario"),
 
 
 ]

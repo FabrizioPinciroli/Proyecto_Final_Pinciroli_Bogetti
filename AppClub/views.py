@@ -4,12 +4,12 @@ from AppClub.models import Socio
 # Create your views here.
 
 
-def socio(req, nombre, edad, correo):
-    socio = Socio(nombre=nombre, edad=edad, correo=correo)
-    socio.save()
+def socios(req, nombre, edad, correo):
+    socios = Socio(nombre=nombre, edad=edad, correo=correo)
+    socios.save()
 
     return HttpResponse(f"""
-<p>Socio: {socio.nombre} edad: {socio.edad} correo: {socio.correo} Creado con éxito. """)
+<p>Socio: {socios.nombre} edad: {socios.edad} correo: {socios.correo} Creado con éxito. """)
 
 
 def listar_socios(req):
@@ -32,3 +32,14 @@ def evento(req):
 
 def deporte(req):
     return render(req, "deporte.html")
+
+
+def socioFormulario(req):
+    if req.method == 'POST':
+        socio = Socio(nombre=req.POST["nombre"], apellido=req.POST["apellido"],
+                      edad=req.POST["edad"], correo=req.POST["correo"])
+        socio.save()
+        return render(req, "inicio.html")
+
+    else:
+        return render(req, "socioFormulario.html")
