@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from AppClub.models import Socio
+from django.http import HttpResponse, HttpRequest
+from AppClub.models import *
+from .forms import *
 # Create your views here.
 
 
@@ -35,11 +36,67 @@ def deporte(req):
 
 
 def socioFormulario(req):
+
     if req.method == 'POST':
-        socio = Socio(nombre=req.POST["nombre"], apellido=req.POST["apellido"],
-                      edad=req.POST["edad"], correo=req.POST["correo"])
-        socio.save()
-        return render(req, "inicio.html")
+        miFormulario = SocioFormulario(req.POST)
+
+        if miFormulario.is_valid():
+            data = miFormulario.cleaned_data
+            socio = Socio(nombre=data["nombre"], apellido=data["apellido"],
+                          edad=data["edad"], correo=data["correo"])
+            socio.save()
+
+            return render(req, "inicio.html")
 
     else:
-        return render(req, "socioFormulario.html")
+        miFormulario = SocioFormulario()
+        return render(req, "socioFormulario.html", {"miFormulario": miFormulario})
+
+
+# def deporteFormulario(req):
+#     if req.method == 'POST':
+#         miFormulario = DeporteFormulario(req.POST)
+#
+#         if miFormulario.is_valid():
+#             data = miFormulario.cleaned_data
+#             deporte = Deporte(
+#                 nombre=data["nombre"], fecha_inicio=data["fecha_inicio"], fecha_fin=data["fecha_fin"])
+#
+#             deporte.save()
+#
+#             return render(req, "inicio.html")
+#
+#     else:
+#         miFormulario = DeporteFormulario()
+#         return render(req, "deporteFormulario.html", {"miFormulario": miFormulario})
+#
+#
+# def eventoFormulario(req):
+#     if req.method == 'POST':
+#         miFormulario = EventoFormulario(req.POST)
+#
+#         if miFormulario.is_valid():
+#             data = miFormulario.cleaned_data
+#             evento = Evento(titulo=data["titulo"], nombre=data["nombre"], fecha=data["fecha"], descripcion=data["descripcion"]
+#                             )
+#
+#             evento.save()
+#
+#             return render(req, "inicio.html")
+#
+#     else:
+#         miFormulario = DeporteFormulario()
+#         return render(req, "deporteFormulario.html", {"miFormulario": miFormulario})
+
+def busquedaApellido(req):
+    return render(req, "busquedaApellido.html")
+
+
+def buscar(req: HttpRequest):
+
+    if req.GET['Apellido']:
+        apellido = req.GET['Apellido']
+        socio = Socio.objects.get(apellido=apellido)
+        return render(req, "resultadoBusqueda.html", {"socio": socio})
+    else:
+        return HttpResponse("socio no existente.")
