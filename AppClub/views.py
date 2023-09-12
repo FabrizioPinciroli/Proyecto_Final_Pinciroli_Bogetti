@@ -77,7 +77,7 @@ def deporteFormulario(req):
 
             data = miFormulario.cleaned_data
             deporte = Deporte(
-                nombre=data["nombre"], fecha_inicio=data["fecha_inicio"], fecha_fin=data["fecha_fin"])
+                nombre=data["nombre"], descripcion=data["descripcion"], fecha_inicio=data["fecha_inicio"], fecha_fin=data["fecha_fin"])
             deporte.save()
             return render(req, "inicio.html")
     else:
@@ -93,7 +93,7 @@ def buscar2(req: HttpRequest):
 
     if req.GET['nombre']:
         nombre = req.GET['nombre']
-        deportes = Deporte.objects.filter(nombre=nombre)
+        deportes = Deporte.objects.filter(nombre__icontains=nombre)
         return render(req, "resultadoBusqueda2.html", {"deportes": deportes})
     else:
         return HttpResponse("Deporte no existente.")

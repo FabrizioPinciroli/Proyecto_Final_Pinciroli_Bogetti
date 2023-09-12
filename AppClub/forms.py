@@ -11,6 +11,7 @@ class SocioFormulario(forms.Form):
 
 class DeporteFormulario(forms.Form):
     nombre = forms.CharField(max_length=60)
+    descripcion = forms.CharField(max_length=60)
     fecha_inicio = forms.DateField()
     fecha_fin = forms.DateField()
 
