@@ -1,0 +1,20 @@
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+
+<p>Deportes registrados:</p>
+
+
+
+{% if deportes %}
+
+<ul>
+
+    {% for deporte in deportes %}
+    <li> {{deporte}} </li>
+    {% endfor %}
+
+</ul>
+
+{% endif %}
+{% endblock ContenidoQueCambia %}

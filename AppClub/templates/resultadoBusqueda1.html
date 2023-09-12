@@ -1,0 +1,20 @@
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+
+<p>Socios registrados:</p>
+
+
+    
+    {% if socios %}
+         
+        <ul>
+
+            {% for socio in socios %}
+                <li> {{socio}} </li>
+            {% endfor %}
+                
+        </ul>
+
+    {% endif %}
+{% endblock ContenidoQueCambia %}

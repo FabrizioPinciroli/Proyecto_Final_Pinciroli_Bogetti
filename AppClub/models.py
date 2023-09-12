@@ -5,7 +5,7 @@ from django.db import models
 
 class Deporte(models.Model):
     nombre = models.CharField(max_length=60)
-    descripcion = models.TextField()
+    descripcion = models.CharField(max_length=60)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
 
