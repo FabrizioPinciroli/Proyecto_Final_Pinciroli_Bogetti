@@ -1,0 +1,12 @@
+{% extends "inicio.html" %}
+
+{% block content %}
+<h2>Perfil de {{ user.username }}</h2>
+<ul>
+    <li><strong>Nombre:</strong> {{ user.get_full_name }}</li>
+    <li><strong>Correo Electrónico:</strong> {{ user.email }}</li>
+    <li><strong>Fecha de Nacimiento:</strong> {{ user.birth_date }}</li>
+    <!-- Agrega más detalles del perfil según tus necesidades -->
+</ul>
+<a href="{% url 'edit_profile' %}" class="btn btn-primary">Editar Perfil</a>
+{% endblock %}
