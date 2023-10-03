@@ -6,7 +6,7 @@ class SocioFormulario(forms.Form):
     nombre = forms.CharField(max_length=60)
     apellido = forms.CharField(max_length=60)
     edad = forms.IntegerField()
-    correo = forms.CharField(max_length=60)
+    correo = forms.EmailField()
 
 
 class DeporteFormulario(forms.Form):

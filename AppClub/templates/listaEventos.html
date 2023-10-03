@@ -1,0 +1,22 @@
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+
+<ul>
+
+    {% for evento in eventos %}
+    <li> {{evento}} </li>
+    <div style="display: flex; column-gap: 5px;">
+        <form action="{% url 'eliminarEventos' evento.id %}" method="post">{% csrf_token %}
+            <button type="submit"> Eliminar </button>
+        </form>
+        <button>
+            <a href="{% url 'editarEventos' evento.id %}"> Editar</a>
+        </button>
+    </div>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock ContenidoQueCambia %}

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
-from AppClub.models import *
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
+from .models import Socio, Deporte, Evento
 from .forms import *
 # Create your views here.
 
@@ -33,6 +36,38 @@ def evento(req):
 
 def deporte(req):
     return render(req, "deporte.html")
+
+
+class SocioList(ListView):
+    model = Socio
+    template_name = "socio_list.html"
+    context_object_name = "socios"
+
+
+class SocioDetail(DetailView):
+    model = Socio
+    template_name = "socio_detail.html"
+    context_object_name = "socio"
+
+
+class SocioCreate(CreateView):
+    model = Socio
+    template_name = "socio_create.html"
+    fields = ['nombre', 'apellido', 'edad', 'correo']
+    success_url = '/AppClub/'
+
+
+class SocioUpdate(UpdateView):
+    model = Socio
+    template_name = "socio_update.html"
+    fields = ('__all__')
+    success_url = '/AppClub/listaSocios'
+
+
+class SocioDelete(DeleteView):
+    model = Socio
+    template_name = "socio_delete.html"
+    success_url = '/AppClub/'
 
 
 def socioFormulario(req):
@@ -129,3 +164,142 @@ def buscar3(req: HttpRequest):
         return render(req, "resultadoBusqueda3.html", {"evento": evento})
     else:
         return HttpResponse("Evento no existente.")
+
+
+def listaSocios(req):
+
+    socios = Socio.objects.all()
+
+    return render(req, "listaSocios.html", {"socios": socios})
+
+
+def listaDeportes(req):
+
+    deportes = Deporte.objects.all()
+
+    return render(req, "listaDeportes.html", {"deportes": deportes})
+
+
+def listaEventos(req):
+
+    eventos = Evento.objects.all()
+
+    return render(req, "listaEventos.html", {"eventos": eventos})
+
+
+def eliminarSocio(req, id):
+    if req.method == 'POST':
+
+        socio = Socio.objects.get(id=id)
+        socio.delete()
+
+        socios = Socio.objects.all()
+
+        return render(req, "listaSocios.html", {"socios": socios})
+
+
+def eliminarDeporte(req, id):
+    if req.method == 'POST':
+
+        deporte = Deporte.objects.get(id=id)
+        deporte.delete()
+
+        deportes = Deporte.objects.all()
+
+        return render(req, "listaDeportes.html", {"deportes": deportes})
+
+
+def eliminarEvento(req, id):
+
+    if req.method == 'POST':
+
+        evento = Evento.objects.get(id=id)
+        evento.delete()
+
+        eventos = Evento.objects.all()
+
+        return render(req, "listaEventos.html", {"eventos": eventos})
+
+
+def editar_socio(req, id):
+
+    socio = Socio.objects.get(id=id)
+
+    if req.method == 'POST':
+        miFormulario = SocioFormulario(req.POST)
+
+        if miFormulario.is_valid():
+
+            data = miFormulario.cleaned_data
+
+            socio.nombre = data["nombre"]
+            socio.apellido = data["apellido"]
+            socio.edad = data["edad"]
+            socio.correo = data["correo"]
+
+            socio.save()
+
+            return render(req, "inicio.html")
+    else:
+        miFormulario = SocioFormulario(initial={
+            "nombre": socio.nombre,
+            "apellido": socio.apellido,
+            "edad": socio.edad,
+            "correo": socio.correo,
+        })
+
+        return render(req, "editarSocio.html", {"miFormulario": miFormulario, "id": socio.id})
+
+
+def editar_deporte(req, id):
+
+    deporte = Deporte.objects.get(id=id)
+
+    if req.method == 'POST':
+        miFormulario = DeporteFormulario(req.POST)
+
+        if miFormulario.is_valid():
+
+            data = miFormulario.cleaned_data
+
+            deporte.nombre = data["nombre"]
+            deporte.descripcion = data["descripcion"]
+            deporte.fecha_inicio = data["fecha_inicio"]
+            deporte.fecha_fin = data["fecha_fin"]
+            deporte.save()
+
+            return render(req, "inicio.html")
+    else:
+        miFormulario = DeporteFormulario(initial={
+            "nombre": deporte.nombre,
+            "descripcion": deporte.descripcion,
+            "fecha_inicio": deporte.fecha_inicio,
+            "fecha_fin": deporte.fecha_fin,
+        })
+
+        return render(req, "editarDeporte.html", {"miFormulario": miFormulario, "id": deporte.id})
+
+
+def editar_evento(req, id):
+
+    evento = Evento.objects.get(id=id)
+
+    if req.method == 'POST':
+        miFormulario = EventoFormulario(req.POST)
+
+        if miFormulario.is_valid():
+
+            data = miFormulario.cleaned_data
+
+            evento.titulo = data["titulo"]
+            evento.fecha = data["fecha"]
+
+            evento.save()
+
+    else:
+        miFormulario = EventoFormulario(initial={
+            "titulo": evento.titulo,
+            "fecha": evento.fecha,
+        })
+
+        return render(req, "editarEvento.html", {"miFormulario": miFormulario, "id": evento.id})
