@@ -1,9 +1,8 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-<form action="{% url 'editarEventos' id %}" method="post"> {% csrf_token %}
-
-    {{miFormulario.as_p}}
+<form action="{% url 'actualizarEvento' pk=evento.id %}" method="post"> {% csrf_token %}
+    {{form.as_p}}
 
     <button type="submit"> Actualizar </button>
 </form>

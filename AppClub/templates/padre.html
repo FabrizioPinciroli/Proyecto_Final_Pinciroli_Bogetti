@@ -20,17 +20,17 @@
     <!-- Page Content-->
     <div class="container px-4 px-lg-5">
         <!-- Heading Row-->
-         <div class="row gx-4 gx-lg-5 align-items-center my-5">
-    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
-            src="https://th.bing.com/th/id/R.ea62b7ae60469140a769ad726afa9b5b?rik=A%2fDOStpyZCs5PA&pid=ImgRaw&r=0"
-            alt="..." /></div>
-    <div class="col-lg-5">
-        <h1 class="font-weight-light">Club Atletico Rosario Central</h1>
-        <p>Bienvenidos a la sede virtual de Rosario Central.<br> Aquí podrá asociarse, consultar los deportes y
-            eventos disponibles!</p>
-   
-    </div>
-</div>
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                    src="https://th.bing.com/th/id/R.ea62b7ae60469140a769ad726afa9b5b?rik=A%2fDOStpyZCs5PA&pid=ImgRaw&r=0"
+                    alt="..." /></div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light">Club Atletico Rosario Central</h1>
+                <p>Bienvenidos a la sede virtual de Rosario Central.<br> Aquí podrá asociarse, consultar los deportes y
+                    eventos disponibles!</p>
+
+            </div>
+        </div>
 
         {% block ContenidoQueCambia %}
 
@@ -47,8 +47,8 @@
                         <p class="card-text">Asociate acá para poder disfrutar de los beneficios de ser parte del club
                             mas grande del interior de Argentina!</p>
                     </div>
-                    <div class="card-footer"><a class="btn btn-primary btn-sm"
-                            href="{% url 'socioFormulario' %}">Asociate acá</a></div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'crearSocios' %}">Asociate
+                            acá</a></div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
@@ -57,8 +57,8 @@
                         <h2 class="card-title">Deportes</h2>
                         <p class="card-text">Ingresa el deporte que quieras practicar</p>
                     </div>
-                    <div class="card-footer"><a class="btn btn-primary btn-sm"
-                            href="{% url 'deporteFormulario' %}">Ingresá deporte</a></div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'crearDeportes' %}">Ingresá
+                            deporte</a></div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
@@ -67,8 +67,8 @@
                         <h2 class="card-title">Eventos</h2>
                         <p class="card-text">Agendá tu evento acá</p>
                     </div>
-                    <div class="card-footer"><a class="btn btn-primary btn-sm"
-                            href="{% url 'eventoFormulario' %}">ingresá evento</a></div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'crearEventos' %}">ingresá
+                            evento</a></div>
                 </div>
             </div>
         </div>

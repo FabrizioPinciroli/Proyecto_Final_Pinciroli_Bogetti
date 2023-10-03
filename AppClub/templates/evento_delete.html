@@ -1,0 +1,13 @@
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+<form action="{% url 'eliminarEventos' pk=evento.id %}" method="post"> {% csrf_token %}
+    {{form.as_p}}
+
+    <p>Está seguro que quiere eliminar el evento?</p>
+
+    <button type="submit"> Confirmar </button>
+    <button>="<a href="{% url 'Inicio' %}"></a>" Cancelar </button>
+</form>
+
+{% endblock ContenidoQueCambia %}
