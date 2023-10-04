@@ -1,22 +1,24 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-
 <ul>
-
     {% for socio in socios %}
     <li> {{socio}} </li>
     <div style="display: flex; column-gap: 5px;">
         <form action="{% url 'eliminarSocios' socio.id %}" method="post">{% csrf_token %}
-            <button type="submit"> Eliminar </button>
+            <button type="submit"> Eliminar Socio </button>
         </form>
         <button>
-            <a href="{% url 'actualizarSocios' socio.id %}"> Editar</a>
+            <a href="{% url 'actualizarSocios' socio.id %}"> Editar Socio</a>
         </button>
     </div>
-
     {% endfor %}
-
 </ul>
-
+<!-- Cambio de la imagen principal -->
+<script>
+    // Busca la imagen principal por su clase y actualiza su atributo 'src'
+    const imagenPrincipal = document.querySelector('.img-fluid.rounded.mb-4.mb-lg-0');
+    imagenPrincipal.src = 'https://1.bp.blogspot.com/-vwreC4kmyu8/XBWoBaOA1PI/AAAAAAAAnnw/bSgKt7N6NOk6UKzWymI5_KmQEspNKMz_QCEwYBhgL/s1600/Deportes03.jpg';
+    imagenPrincipal.alt = 'Nueva Imagen';
+</script>
 {% endblock ContenidoQueCambia %}
