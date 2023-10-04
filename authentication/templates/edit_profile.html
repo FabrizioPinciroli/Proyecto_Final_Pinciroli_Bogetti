@@ -1,4 +1,4 @@
-{% extends "inicio.html" %}
+{% extends "inicio_usuario.html" %}
 
 {% block content %}
 <h2>Editar Perfil</h2>
@@ -7,5 +7,5 @@
     {{ form.as_p }}
     <button type="submit">Guardar Cambios</button>
 </form>
-<a href="{% url 'profile' %}">Volver al Perfil</a> <!-- Enlaza a la página de perfil del usuario -->
+<a href="{% url 'profile' %}">Volver al Perfil</a>
 {% endblock %}

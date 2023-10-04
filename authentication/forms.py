@@ -15,3 +15,8 @@ class CustomUserChangeForm(UserChangeForm):
             "address",
             "phone_number",
         )
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput())
