@@ -4,8 +4,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserChangeForm
 
+
 def inicio(req):
-    return render(req, "inicio.html")
+    return render(req, "authentication/inicio.html")
+
 
 def login_view(req):
     if req.method == "POST":
