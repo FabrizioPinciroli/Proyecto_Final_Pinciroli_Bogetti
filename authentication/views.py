@@ -10,8 +10,6 @@ def inicio_usuario(req):
 
 
 def login_view(req):
-    if req.user.is_authenticated:
-        return redirect("inicio_usuario.html")
     if req.method == "POST":
         form = AuthenticationForm(req, req.POST)
         if form.is_valid():
@@ -28,7 +26,7 @@ def login_view(req):
 
 def logout_view(req):
     logout(req)
-    return redirect("inicio_usuario")
+    return redirect("Inicio")
 
 
 def signup_view(req):
