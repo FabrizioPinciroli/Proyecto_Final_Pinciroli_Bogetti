@@ -4,11 +4,6 @@ from AppClub.views import *
 urlpatterns = [
     path("", inicio, name="Inicio"),
     # vistas basadas en clases, editar.
-    path("listarSocios/", SocioList.as_view(), name="listarSocios"),
-    path("detalleSocios/<pk>", SocioDetail.as_view(), name="detallarSocios"),
-    path("crearSocios/", SocioCreate.as_view(), name="crearSocios"),
-    path("actualizarSocios/<pk>", SocioUpdate.as_view(), name="actualizarSocios"),
-    path("eliminarSocios/<pk>", SocioDelete.as_view(), name="eliminarSocios"),
     path("listarDeportes/", DeporteList.as_view(), name="listarDeportes"),
     path("detalleDeportes/<pk>", DeporteDetail.as_view(), name="detallarDeportes"),
     path("crearDeportes/", DeporteCreate.as_view(), name="crearDeportes"),

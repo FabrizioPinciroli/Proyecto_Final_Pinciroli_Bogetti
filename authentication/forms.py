@@ -1,22 +1,36 @@
 from django import forms
-from django.contrib.auth.forms import UserChangeForm
-from .models import CustomUser
+from django.contrib.auth.forms import UserCreationForm
+from .models import Perfil
 
 
-class CustomUserChangeForm(UserChangeForm):
+class SignupForm(UserCreationForm):
     class Meta:
-        model = CustomUser
-        fields = (
+        model = Perfil
+        fields = [
+            "username",
             "first_name",
             "last_name",
             "email",
-            "birth_date",
+            "fecha_nacimiento",
+            "telefono",
+            "domicilio",
+            "evento",
+            "deporte",
             "avatar",
-            "address",
-            "phone_number",
-        )
+        ]
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput())
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = [
+            "first_name",
+            "last_name",
+            "email",
+            "fecha_nacimiento",
+            "telefono",
+            "domicilio",
+            "evento",
+            "deporte",
+            "avatar",
+        ]

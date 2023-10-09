@@ -5,7 +5,9 @@
 <ul>
 
     {% for evento in eventos %}
+
     <li> {{evento}} </li>
+    {% if user.is_staff %}
     <div style="display: flex; column-gap: 5px;">
         <form action="{% url 'eliminarEventos' evento.id %}" method="post">{% csrf_token %}
             <button type="submit"> Eliminar </button>
@@ -14,7 +16,7 @@
             <a href="{% url 'actualizarEvento' evento.id %}"> Editar</a>
         </button>
     </div>
-
+    {% endif %}
     {% endfor %}
 
 </ul>

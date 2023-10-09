@@ -3,10 +3,9 @@
 {% block ContenidoQueCambia %}
 
 
-<h1>Iniciar Sesión</h1>
+<h2>Iniciar Sesión</h2>
 <container>
-
-    <form method="post">
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
 
@@ -14,14 +13,15 @@
             {{ form.username.label_tag }} {{ form.username }}
             {{ form.username.errors }}
         </div>
+        <br>
         <div class="fieldWrapper">
             {{ form.password.label_tag }} {{ form.password }}
             {{ form.password.errors }}
         </div>
-
-        <button type="submit">Iniciar Sesión</button>
+        <br>
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
     </form>
 
-    <p>No tienes una cuenta? <a href="{% url 'signup' %}">Registrarse</a></p>
+    <p>No tienes una cuenta? <a href="{% url 'signup' %}" class="btn btn-secondary">Registrarse</a></p>
 </container>
 {% endblock ContenidoQueCambia %}

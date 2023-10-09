@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -11,17 +12,6 @@ class Deporte(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.descripcion}"
-
-
-class Socio(models.Model):
-    nombre = models.CharField(max_length=60)
-    apellido = models.CharField(max_length=60, null=True)
-    edad = models.IntegerField()
-    correo = models.EmailField()
-    deportes = models.ManyToManyField(Deporte)
-
-    def __str__(self):
-        return f"{self.nombre} {self.apellido} - {self.correo}"
 
 
 class Evento(models.Model):

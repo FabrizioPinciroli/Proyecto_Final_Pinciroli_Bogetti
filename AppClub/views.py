@@ -3,47 +3,18 @@ from django.http import HttpResponse, HttpRequest
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
-from .models import Socio, Deporte, Evento
+from .models import Deporte, Evento
 from .forms import *
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
 
 def inicio(req):
     return render(req, "inicio.html")
-
-
-class SocioList(ListView):
-    model = Socio
-    template_name = "socio_list.html"
-    context_object_name = "socios"
-
-
-class SocioDetail(DetailView):
-    model = Socio
-    template_name = "socio_detail.html"
-    context_object_name = "socio"
-
-
-class SocioCreate(CreateView):
-    model = Socio
-    template_name = "socio_create.html"
-    fields = "__all__"
-    success_url = reverse_lazy("listarSocios")
-
-
-class SocioUpdate(UpdateView):
-    model = Socio
-    template_name = "socio_update.html"
-    fields = "__all__"
-    success_url = reverse_lazy("listarSocios")
-
-
-class SocioDelete(DeleteView):
-    model = Socio
-    template_name = "socio_delete.html"
-    success_url = reverse_lazy("listarSocios")
 
 
 class DeporteList(ListView):
@@ -58,21 +29,21 @@ class DeporteDetail(DetailView):
     context_object_name = "deporte"
 
 
-class DeporteCreate(CreateView):
+class DeporteCreate(LoginRequiredMixin, CreateView):
     model = Deporte
     template_name = "deporte_create.html"
     fields = "__all__"
     success_url = reverse_lazy("listarDeportes")
 
 
-class DeporteUpdate(UpdateView):
+class DeporteUpdate(LoginRequiredMixin, UpdateView):
     model = Deporte
     template_name = "deporte_update.html"
     fields = "__all__"
     success_url = reverse_lazy("listarDeportes")
 
 
-class DeporteDelete(DeleteView):
+class DeporteDelete(LoginRequiredMixin, DeleteView):
     model = Deporte
     template_name = "deporte_delete.html"
     success_url = reverse_lazy("listarDeportes")
@@ -90,21 +61,21 @@ class EventoDetail(DetailView):
     context_object_name = "evento"
 
 
-class EventoCreate(CreateView):
+class EventoCreate(LoginRequiredMixin, CreateView):
     model = Evento
     template_name = "evento_Create.html"
     fields = "__all__"
     success_url = reverse_lazy("listarEventos")
 
 
-class EventoUpdate(UpdateView):
+class EventoUpdate(LoginRequiredMixin, UpdateView):
     model = Evento
     template_name = "evento_update.html"
     fields = "__all__"
     success_url = reverse_lazy("listarEventos")
 
 
-class EventoDelete(DeleteView):
+class EventoDelete(LoginRequiredMixin, DeleteView):
     model = Evento
     template_name = "evento_delete.html"
     success_url = reverse_lazy("listarEventos")
