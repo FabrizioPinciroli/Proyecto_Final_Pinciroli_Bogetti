@@ -10,9 +10,9 @@
                 {% if user.is_authenticated %}
                 <!--  AGREGAR AVATAR -->
                 {% if user.avatar %}
-                <img src="{{ user.avatar.url }}" alt="{{ user.username }} Avatar"  class="img-fluid">
+                <img src="{{ user.avatar.url }}" alt="{{ user.username }} Avatar" class="img-fluid">
                 {% else %}
-                <img src="{% static 'default_avatar.png' %}" alt="Avatar por defecto"  class="img-fluid">
+                <img src="{% static 'default_avatar.png' %}" alt="Avatar por asd defecto" class="img-fluid">
                 {% endif %}
 
                 <a class="navbar-brand" href="{% url 'profile' %}">Mi Usuario</a>
