@@ -17,11 +17,10 @@
 
 <body>
     {% include 'navbar.html' %}
-    <!-- Page Content-->
     <div class="container px-4 px-lg-5">
         <!-- Heading Row-->
         <div class="row gx-4 gx-lg-5 align-items-center my-5">
-            <!-- Imagen en el HTML padre -->
+
             <div class="col-lg-7">
                 <img class="img-fluid rounded mb-4 mb-lg-0"
                     src='https://th.bing.com/th/id/R.de5332d78d30002465b6833e0306f414?rik=WKZUzATy8fLkDA&pid=ImgRaw&r=0'
@@ -35,24 +34,21 @@
                     eventos proximos!</p>
             </div>
         </div>
-
         {% block ContenidoQueCambia %}
-
         {% endblock ContenidoQueCambia %}
-
-
 
         <!-- Content Row-->
         {% if user.is_staff %}
-        
+
         <div class="row gx-4 gx-lg-5">
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
                     <div class="card-body">
                         <h2 class="card-title">Noticias</h2>
-                        <p class="card-text">Crear nuevas Publicaciones</p>
+                        <p class="card-text">Crea una noticia acá</p>
                     </div>
-                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'crearEventos' %}">Crear publicación</a></div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'crearNoticias' %}">Crear
+                            noticia</a></div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
@@ -89,5 +85,6 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
 </body>
+
 
 </html>

@@ -1,12 +1,22 @@
 from django.contrib import admin
-from .models import Evento, Deporte
+from .models import Noticia, Evento, Deporte
 
-# Register your models here.
+
+class NoticiaAdmin(admin.ModelAdmin):
+    list_display = ["titulo", "subtitulo", "fecha", "tema"]
+    list_filter = ["tema"]
 
 
 class DeporteAdmin(admin.ModelAdmin):
-    list_filter = ["nombre"]
+    list_display = ["nombre", "descripcion", "categoria"]
+    list_filter = ["categoria"]
 
 
-admin.site.register(Evento)
+class EventoAdmin(admin.ModelAdmin):
+    list_display = ["titulo", "fecha", "descripcion", "deporte"]
+    list_filter = ["deporte"]
+
+
+admin.site.register(Noticia, NoticiaAdmin)
+admin.site.register(Evento, EventoAdmin)
 admin.site.register(Deporte, DeporteAdmin)

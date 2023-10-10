@@ -1,12 +1,11 @@
 from django import forms
+from .models import Noticia
 
 
-class SocioFormulario(forms.Form):
-
-    nombre = forms.CharField(max_length=60)
-    apellido = forms.CharField(max_length=60)
-    edad = forms.IntegerField()
-    correo = forms.EmailField()
+class NoticiaFormulario(forms.ModelForm):
+    class Meta:
+        model = Noticia
+        fields = "__all__"
 
 
 class DeporteFormulario(forms.Form):

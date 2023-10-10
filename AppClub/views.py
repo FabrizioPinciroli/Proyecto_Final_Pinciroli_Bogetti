@@ -3,18 +3,62 @@ from django.http import HttpResponse, HttpRequest
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
-from .models import Deporte, Evento
-from .forms import *
+from .models import Noticia, Deporte, Evento
+from .forms import NoticiaFormulario
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
-from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
 
 def inicio(req):
     return render(req, "inicio.html")
+
+
+def about_us(req):
+    return render(req, "about_us.html")
+
+
+class NoticiaList(ListView):
+    model = Noticia
+    template_name = "noticia_list.html"
+    context_object_name = "noticias"
+
+
+class NoticiaDetail(DetailView):
+    model = Noticia
+    template_name = "noticia_detail.html"
+    context_object_name = "noticia"
+
+
+class NoticiaCreate(LoginRequiredMixin, CreateView):
+    model = Noticia
+    template_name = "noticia_create.html"
+    form_class = NoticiaFormulario
+    success_url = reverse_lazy("Inicio")
+
+    def form_valid(self, form):
+        if form.is_valid():
+            form.save()
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = self.form_class()
+        return context
+
+
+class NoticiaUpdate(LoginRequiredMixin, UpdateView):
+    model = Noticia
+    template_name = "noticia_update.html"
+    form_class = NoticiaFormulario
+    success_url = reverse_lazy("listarNoticias")
+
+
+class NoticiaDelete(DeleteView):
+    model = Noticia
+    template_name = "noticia_delete.html"
+    success_url = reverse_lazy("listarNoticias")
 
 
 class DeporteList(ListView):

@@ -1,0 +1,30 @@
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+<h1>Lista de Noticias</h1>
+<ul>
+    {% for noticia in noticias %}
+    <li>
+        <a href="{% url 'detallarNoticias' pk=noticia.pk %}">
+            <img src="{{ object.noticia.url }}" alt="{{ noticia.pie_de_foto }}">
+        </a>
+
+    </li>
+    <div style="display: flex; column-gap: 5px;">
+        <form action="{% url 'eliminarNoticias' pk=noticia.pk %}" method="post">{% csrf_token %}
+            <button type="submit"> Eliminar </button>
+        </form>
+        <button>
+            <a href="{% url 'actualizarNoticias' pk=noticia.pk %}"> Editar</a>
+        </button>
+    </div>
+    {% empty %}
+    <p>No hay noticias disponibles.</p>
+    {% endfor %}
+</ul>
+<script>
+    const imagenPrincipal = document.querySelector('.img-fluid.rounded.mb-4.mb-lg-0');
+    imagenPrincipal.src = 'https://i.ytimg.com/vi/Bmpozvp2gQI/maxresdefault.jpg';
+    imagenPrincipal.alt = 'Nueva Imagen';
+</script>
+{% endblock ContenidoQueCambia %}
