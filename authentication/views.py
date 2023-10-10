@@ -92,3 +92,7 @@ def change_password(req):
         form = PasswordChangeForm(req.user)
 
     return render(req, "change_password.html", {"form": form})
+
+
+def pagina_no_encontrada(request):
+    return render(request, "404.html")
