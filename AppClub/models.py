@@ -16,7 +16,7 @@ class Noticia(models.Model):
     fecha = models.DateField()
     tema = models.CharField(max_length=100)
     desarrollo = models.TextField(max_length=300)
-    imagen = models.ImageField(upload_to="noticias/")
+    imagen = models.ImageField(upload_to="noticias", null=True)
     pie_de_foto = models.CharField(max_length=100)
 
     def __str__(self):
@@ -31,3 +31,26 @@ class Evento(models.Model):
 
     def __str__(self):
         return f"{self.titulo} - {self.fecha}"
+
+
+opciones_consultas = [
+
+    [0, "consulta"],
+    [1, "reclamo"],
+    [2, "sugerencia"],
+    [3, "felicitaciones"]
+
+
+]
+
+
+class Contacto(models.Model):
+
+    nombre = models.CharField(max_length=50)
+    correo = models.EmailField()
+    tipo_consulta = models.IntegerField(choices=opciones_consultas)
+    mensajes = models.TextField()
+    avisos = models.BooleanField()
+
+    def __str__(self):
+        return f"{self.nombre}"

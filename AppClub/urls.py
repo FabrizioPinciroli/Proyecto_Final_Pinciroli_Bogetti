@@ -6,6 +6,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("", inicio, name="Inicio"),
     path("about_us/", about_us, name="about_us"),
+    path("contacto/", contacto, name="contacto"),
+
+
     path("listarNoticias/", NoticiaList.as_view(), name="listarNoticias"),
     path("detallarNoticias/<pk>/", NoticiaDetail.as_view(), name="detallarNoticias"),
     path("crearNoticias/", NoticiaCreate.as_view(), name="crearNoticias"),
@@ -23,9 +26,11 @@ urlpatterns = [
     path("listarEventos/", EventoList.as_view(), name="listarEventos"),
     path("detalleEventos/<pk>/", EventoDetail.as_view(), name="detallarEventos"),
     path("crearEventos/", EventoCreate.as_view(), name="crearEventos"),
-    path("actualizarEventos/<pk>/", EventoUpdate.as_view(), name="actualizarEvento"),
+    path("actualizarEventos/<pk>/",
+         EventoUpdate.as_view(), name="actualizarEvento"),
     path("eliminarEventos/<pk>/", EventoDelete.as_view(), name="eliminarEventos"),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

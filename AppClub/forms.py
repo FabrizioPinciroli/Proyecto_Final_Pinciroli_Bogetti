@@ -1,5 +1,5 @@
 from django import forms
-from .models import Noticia
+from .models import Noticia, Contacto
 
 
 class NoticiaFormulario(forms.ModelForm):
@@ -18,3 +18,9 @@ class DeporteFormulario(forms.Form):
 class EventoFormulario(forms.Form):
     titulo = forms.CharField(max_length=100)
     fecha = forms.DateField()
+
+
+class ContactoFormulario(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = "__all__"

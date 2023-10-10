@@ -4,7 +4,7 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from .models import Noticia, Deporte, Evento
-from .forms import NoticiaFormulario
+from .forms import NoticiaFormulario, ContactoFormulario
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -17,6 +17,22 @@ def inicio(req):
 
 def about_us(req):
     return render(req, "about_us.html")
+
+
+def contacto(req):
+    data = {
+        'form': ContactoFormulario()
+    }
+
+    if req.method == 'POST':
+        formulario = ContactoFormulario(data=req.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Mensaje enviado."
+        else:
+            data['form'] = formulario
+
+    return render(req, 'contacto.html', data)
 
 
 class NoticiaList(ListView):

@@ -7,6 +7,7 @@
                 <a class="navbar-brand" href="{% url 'listarEventos' %}">Eventos</a>
                 <a class="navbar-brand" href="{% url 'listarDeportes' %}">Deportes</a>
                 <a class="navbar-brand" href="{% url 'about_us' %}">Nosotros</a>
+                <a class="navbar-brand" href="{% url 'contacto' %}">Contacto</a>
                 {% if user.is_authenticated %}
                 <!--  AGREGAR AVATAR -->
                 {% if user.avatar %}
