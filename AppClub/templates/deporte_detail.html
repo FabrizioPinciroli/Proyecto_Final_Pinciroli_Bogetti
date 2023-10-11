@@ -1,9 +1,15 @@
 {% extends 'padre.html' %}
-
+{% load static %}
 {% block ContenidoQueCambia %}
-<div class="container px-4 px-lg-5">
-<h1>Vista en detalle del deporte</h1>
+<div class="row mt-4 px-4 px-lg-5 gx-4 gx-lg-5 align-items-center mx-auto my-5">
+        <div class="col-lg-7">
+            <img src="{% static 'default_evento.jpg' %}" width="500" height="300" alt="Avatar por defecto">
+        </div>
+        <div class="col-lg-5">
+        <p><strong style="text-transform: uppercase;">{{deporte.categoria}}</strong></p>
+            <h2 class="font-weight-light">{{deporte.nombre}}</h2>
+            <p>{{deporte.descripcion}}</p>
 
-<h4>Deporte: {{deporte.nombre}} {{deporte.descripcion}}</h4>
-<div>
+        </div>
+</div>
 {% endblock ContenidoQueCambia %}
