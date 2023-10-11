@@ -11,6 +11,12 @@
             <h6>Evento programado para el día {{evento.fecha}}</h6>
             <p>{{evento.descripcion}}</p>
 
+            <form method="post" action="{% url 'agregar_evento' %}">
+            {% csrf_token %}
+            <input type="hidden" name="evento" value="{{evento.id}}">
+            <button type="submit" class="btn btn-primary btn-block">Reservar</button>
+        </form>
+
         </div>
 </div>
 {% endblock ContenidoQueCambia %}

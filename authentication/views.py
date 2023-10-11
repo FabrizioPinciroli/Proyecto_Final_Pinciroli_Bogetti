@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-from .forms import SignupForm, EditProfileForm
+from .forms import SignupForm, EditProfileForm, AgregaEventoForm, AgregaDeporteForm
 from .models import Perfil
 from AppClub.models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -96,3 +96,29 @@ def change_password(req):
 
 def Error404(req, exception):
     return render(req, "Error404.html", {}, status=404)
+
+
+def agregar_evento(req):
+    if req.method == "POST":
+        form = AgregaEventoForm(req.POST, instance=req.user)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+
+    else:
+        form = AgregaEventoForm(instance=req.user)
+
+    return render(req, "evento_detail.html", {"form": form})
+
+
+def agregar_deporte(req):
+    if req.method == "POST":
+        form = AgregaDeporteForm(req.POST, instance=req.user)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+
+    else:
+        form = AgregaDeporteForm(instance=req.user)
+
+    return render(req, "deporte_detail.html", {"form": form})

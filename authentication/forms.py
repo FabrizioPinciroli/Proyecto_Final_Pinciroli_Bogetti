@@ -30,3 +30,19 @@ class EditProfileForm(forms.ModelForm):
             "domicilio",
             "avatar",
         ]
+
+
+class AgregaEventoForm(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = [
+            "evento",
+        ]
+
+
+class AgregaDeporteForm(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = [
+            "deporte",
+        ]

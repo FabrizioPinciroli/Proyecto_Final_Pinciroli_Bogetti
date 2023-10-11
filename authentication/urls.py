@@ -14,4 +14,6 @@ urlpatterns = [
     path("edit_profile/", edit_profile, name="edit_profile"),
     path("change_password/", change_password, name="change_password"),
     path("Error404/", Error404, name="Error404"),
+    path("agregar_evento/", agregar_evento, name="agregar_evento"),
+    path("agregar_deporte/", agregar_deporte, name="agregar_deporte"),
 ]
