@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Noticia, Evento, Deporte
+from .models import Noticia, Evento, Deporte, Contacto
 
 
 class NoticiaAdmin(admin.ModelAdmin):
@@ -20,3 +20,4 @@ class EventoAdmin(admin.ModelAdmin):
 admin.site.register(Noticia, NoticiaAdmin)
 admin.site.register(Evento, EventoAdmin)
 admin.site.register(Deporte, DeporteAdmin)
+admin.site.register(Contacto)
