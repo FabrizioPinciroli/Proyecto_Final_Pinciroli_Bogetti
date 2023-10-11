@@ -1,16 +1,20 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
 
-
-
-<h1>{{noticia.titulo}}</h1>
-<h4>Tema: {{noticia.tema}}</h4>
-<h6>{{noticia.desarrollo}}</h6>
-{% if noticia.imagen %}
-<img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="800" height="400">
-{% endif %}
-<br>
-<br>
-<h6>Fecha: {{noticia.fecha}}</h4>
-    {% endblock ContenidoQueCambia %}
+        <div class="col-lg-7">
+            {% if noticia.imagen %}
+            <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="600" height="300">
+            {% endif %}
+        </div>
+        <div class="col-lg-5">
+            <h2 class="font-weight-light">{{noticia.titulo}}</h2>
+            <h5>Tema: {{noticia.tema}}</h5>
+            <p>{{noticia.desarrollo}}</p>
+            <p>Fecha: {{noticia.fecha}}</p>
+            <br><br><br>
+        </div>
+        {% endblock ContenidoQueCambia %}
