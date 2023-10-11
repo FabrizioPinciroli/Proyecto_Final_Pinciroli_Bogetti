@@ -7,6 +7,10 @@ class NoticiaFormulario(forms.ModelForm):
         model = Noticia
         fields = "__all__"
 
+    def __init__(self, *args, **kwargs):
+        super(NoticiaFormulario, self).__init__(*args, **kwargs)
+        self.fields["imagen"].widget.attrs["accept"] = "image/*"
+
 
 class DeporteFormulario(forms.Form):
     nombre = forms.CharField(max_length=60)

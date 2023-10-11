@@ -1,7 +1,7 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-<form action="{% url 'crearNoticias' %}" method="post"> {% csrf_token %}
+<form action="{% url 'crearNoticias' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
     {{form.as_p}}
 
     <button type="submit"> Crear </button>

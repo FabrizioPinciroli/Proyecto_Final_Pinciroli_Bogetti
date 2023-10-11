@@ -9,7 +9,9 @@
                     <div class="card-body">
                         <h3 class="card-title">{{ noticia.titulo }}</h3>
                         <a href="{% url 'detallarNoticias' pk=noticia.pk %}">
-                            <img src="{{ object.noticia.url }}" alt="Imagen de Noticia">
+                         {% if noticia.imagen %}
+                            <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="150">
+                         {% endif %}
                         </a>
                         <p class="card-text">{{ noticia.pie_de_foto }}</p>
                     </div>

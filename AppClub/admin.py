@@ -3,7 +3,7 @@ from .models import Noticia, Evento, Deporte, Contacto
 
 
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ["titulo", "subtitulo", "fecha", "tema"]
+    list_display = ["titulo", "subtitulo", "fecha", "tema", "imagen"]
     list_filter = ["tema"]
 
 
