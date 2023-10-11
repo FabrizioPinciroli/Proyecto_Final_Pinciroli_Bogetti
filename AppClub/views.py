@@ -20,19 +20,17 @@ def about_us(req):
 
 
 def contacto(req):
-    data = {
-        'form': ContactoFormulario()
-    }
+    data = {"form": ContactoFormulario()}
 
-    if req.method == 'POST':
+    if req.method == "POST":
         formulario = ContactoFormulario(data=req.POST)
         if formulario.is_valid():
             formulario.save()
-            data['mensaje'] = "Mensaje enviado."
+            data["mensaje"] = "Mensaje enviado."
         else:
-            data['form'] = formulario
+            data["form"] = formulario
 
-    return render(req, 'contacto.html', data)
+    return render(req, "contacto.html", data)
 
 
 class NoticiaList(ListView):
@@ -53,12 +51,24 @@ class NoticiaCreate(LoginRequiredMixin, CreateView):
     form_class = NoticiaFormulario
     success_url = reverse_lazy("Inicio")
 
+    def form_valid(self, form):
+        # Procesa la imagen si se ha cargado
+        if "imagen" in self.request.FILES:
+            form.instance.imagen = self.request.FILES["imagen"]
+        return super().form_valid(form)
+
 
 class NoticiaUpdate(LoginRequiredMixin, UpdateView):
     model = Noticia
     template_name = "noticia_update.html"
     form_class = NoticiaFormulario
     success_url = reverse_lazy("listarNoticias")
+
+    def form_valid(self, form):
+        # Procesa la imagen si se ha cargado
+        if "imagen" in self.request.FILES:
+            form.instance.imagen = self.request.FILES["imagen"]
+        return super().form_valid(form)
 
 
 class NoticiaDelete(DeleteView):
