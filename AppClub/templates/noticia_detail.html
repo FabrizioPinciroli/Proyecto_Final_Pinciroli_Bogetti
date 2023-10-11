@@ -7,9 +7,8 @@
 <h1>{{noticia.titulo}}</h1>
 <h4>Tema: {{noticia.tema}}</h4>
 <h6>{{noticia.desarrollo}}</h4>
-    {{noticia.imagen.url}}
     {% if noticia.imagen %}
-    <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="300">
+    <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="800" height="400">
     {% endif %}
     <br>
     <br>
