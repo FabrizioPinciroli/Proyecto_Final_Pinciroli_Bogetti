@@ -9,7 +9,11 @@
         <p><strong style="text-transform: uppercase;">{{deporte.categoria}}</strong></p>
             <h2 class="font-weight-light">{{deporte.nombre}}</h2>
             <p>{{deporte.descripcion}}</p>
-
+        <form method="post" action="{% url 'agregar_deporte' %}">
+            {% csrf_token %}
+            <input type="hidden" name="deporte" value="{{deporte.id}}">
+            <button type="submit" class="btn btn-primary btn-block">Anotarme</button>
+        </form>
         </div>
 </div>
 {% endblock ContenidoQueCambia %}
