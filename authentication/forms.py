@@ -14,8 +14,6 @@ class SignupForm(UserCreationForm):
             "fecha_nacimiento",
             "telefono",
             "domicilio",
-            "evento",
-            "deporte",
             "avatar",
         ]
 
@@ -30,7 +28,5 @@ class EditProfileForm(forms.ModelForm):
             "fecha_nacimiento",
             "telefono",
             "domicilio",
-            "evento",
-            "deporte",
             "avatar",
         ]

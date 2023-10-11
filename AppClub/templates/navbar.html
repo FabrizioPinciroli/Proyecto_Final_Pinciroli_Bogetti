@@ -12,7 +12,7 @@
                         <li class="navbar-brand"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                         {% if user.is_authenticated %}
                         {% if user.avatar %}
-                        <li> <img src="{{ user.avatar.url }}" height='50px' alt="{{ user.username }} Avatar" style="border-radius: 50%; overflow: hidden"> 
+                        <li> <img src="{{ user.avatar.url }}" alt="{{ user.username }} Avatar" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;"> 
                         </li>
                         {% else %}
                         <li><img src="{% static 'default_avatar.png' %}" height='50px' alt="Avatar por defecto"></li>

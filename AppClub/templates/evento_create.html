@@ -1,10 +1,13 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-<form action="{% url 'crearEventos' %}" method="post"> {% csrf_token %}
+<div class="row mt-4 px-4 px-lg-5 gx-4 gx-lg-5 align-items-center mx-auto my-5">
+<h2>Crear Evento</h2>
+<form action="{% url 'crearEventos' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
     {{form.as_p}}
 
-    <button type="submit"> Crear </button>
+    <button type="submit" class="btn btn-primary"> Crear </button>
+    <a href="{% url 'Inicio' %}"  class="btn btn-secondary">Volver al Inicio</a>
 </form>
-
+</div>
 {% endblock ContenidoQueCambia %}
