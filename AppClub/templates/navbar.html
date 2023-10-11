@@ -9,6 +9,7 @@
                         <li class="navbar-brand"><a class="nav-link" href="{% url 'listarEventos' %}">Eventos</a>
                         <li class="navbar-brand"><a class="nav-link" href="{% url 'listarDeportes' %}">Deportes</a>
                         <li class="navbar-brand"><a class="nav-link" href="{% url 'about_us' %}">Nosotros</a>
+                        <li class="navbar-brand"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                         {% if user.is_authenticated %}
                         {% if user.avatar %}
                         <li> <img src="{{ user.avatar.url }}" height='50px' alt="{{ user.username }} Avatar" style="border-radius: 50%; overflow: hidden"> 
