@@ -43,7 +43,7 @@ def signup_view(req):
     if req.method == "POST":
         form = SignupForm(req.POST, req.FILES)
         if form.is_valid():
-            perfil = form.save(commit=False)
+            perfil = form.save()
             perfil.set_password(form.cleaned_data["password1"])
             perfil.save()
             login(req, perfil)

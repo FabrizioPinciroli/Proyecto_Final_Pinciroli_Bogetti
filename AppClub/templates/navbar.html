@@ -15,7 +15,7 @@
                         <li> <img src="{{ user.avatar.url }}" height='50px' alt="{{ user.username }} Avatar" style="border-radius: 50%; overflow: hidden"> 
                         </li>
                         {% else %}
-                        <img src="{% static 'default_avatar.png' %}" height='50px' alt="Avatar por defecto">
+                        <li><img src="{% static 'default_avatar.png' %}" height='50px' alt="Avatar por defecto"></li>
                         {% endif %}
                         <li class="navbar-brand"><a class="nav-link" href="{% url 'profile' %}">Mi Perfil</a>
                         <li class="navbar-brand"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>

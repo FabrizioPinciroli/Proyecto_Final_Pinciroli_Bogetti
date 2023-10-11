@@ -15,6 +15,12 @@ class PerfilAdmin(admin.ModelAdmin):
         "evento",
         "avatar",
     ]
+    list_filter = [
+        "is_active",
+        "is_staff",
+        "deporte",
+        "evento",
+    ]
 
 
 admin.site.register(Perfil, PerfilAdmin)

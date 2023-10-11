@@ -17,7 +17,12 @@ class EventoAdmin(admin.ModelAdmin):
     list_filter = ["deporte"]
 
 
+class ContactoAdmin(admin.ModelAdmin):
+    list_display = ["nombre", "tipo_consulta"]
+    list_filter = ["avisos"]
+
+
 admin.site.register(Noticia, NoticiaAdmin)
 admin.site.register(Evento, EventoAdmin)
 admin.site.register(Deporte, DeporteAdmin)
-admin.site.register(Contacto)
+admin.site.register(Contacto, ContactoAdmin)

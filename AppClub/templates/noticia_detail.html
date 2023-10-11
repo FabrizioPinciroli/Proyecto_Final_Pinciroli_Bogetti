@@ -1,20 +1,20 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-<div class="container px-4 px-lg-5">
-    <!-- Heading Row-->
-    <div class="row gx-4 gx-lg-5 align-items-center my-5">
-
+<div class="row mt-4 px-4 px-lg-5 gx-4 gx-lg-5 align-items-center mx-auto my-5">
         <div class="col-lg-7">
             {% if noticia.imagen %}
-            <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="600" height="300">
+            <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" class="img-fluid w-100 h-auto">
             {% endif %}
+            <br>
+            <p><em>{{noticia.pie_de_foto}}</em></p>
         </div>
         <div class="col-lg-5">
+            <p><strong style="text-transform: uppercase;">{{noticia.tema}}</strong></p>
             <h2 class="font-weight-light">{{noticia.titulo}}</h2>
-            <h5>Tema: {{noticia.tema}}</h5>
+            <h6>{{noticia.subtitulo}}</h6>
             <p>{{noticia.desarrollo}}</p>
-            <p>Fecha: {{noticia.fecha}}</p>
-            <br><br><br>
+            <p>Publicado el día {{noticia.fecha}} por <strong>AUTOR</strong> </p>
+        </div>
         </div>
         {% endblock ContenidoQueCambia %}
