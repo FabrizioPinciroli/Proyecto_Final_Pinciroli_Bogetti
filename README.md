@@ -1,31 +1,34 @@
-# Tercera Pre-Entrega proyecto CoderHouse
+# Proyecto Final CoderHouse
 
-# Sede Virtual del Club Atletico Rosario Central
+ Alumnos: Fabrizio Pinciroli, Santiago Bogetti
+ Comisión: 43880
+
+## Versión:
+1.0
+
+# Nombre del proyecto:
+## Sede Virtual del Club Atletico Central Cordoba de Rosario
+
 
 ## Descripción del Proyecto
 
-Este proyecto es una sede virtual para un club de la ciudad de Rosario, la misma esta desarrollada con DJango.
-Te brinda una plataforma online donde los usuarios pueden agregar nuevos socios, eventos y deportes y pueden acceder a la informacion sobre los mismos.
-Además, los usuarios pueden hacerlo a traveés de la interfaz de la administracion. 
+Esta web cuenta con una página de inicio la cual le da la bienvenida al usuario y
+contiene un poco de información sobre el club. Desde la barra de navegación podemos acceder a las secciones 
+"Noticias", "Deportes" y "Eventos". Estos pueden ser creados, editados y eliminados por usuarios que sean
+parte del Staff. Además cuenta con una sección "Mi Perfil", en la cual el socio puede editar sus datos, 
+cambiar su contraseña y visualizar sus reservas para los distintos eventos.
 
 
-## Funcionalidades Principales
+## Pruebas Realizadas
+Falta 
 
-- Permite visualizar información sobre socios y sus detalles.
-- Permite visualizar eventos deportivos programados.
+## Video Demostración
+Falta
+
+
 - Ver los deportes ofrecidos el club.
-- Agregar nuevos socios, eventos deportivos y deportes a través del panel de administración.
+- Si sos admin o parte del staff podes agregar, editar o eliminar nuevas noticias, eventos deportivos y deportes a través del panel de administración.
 
-## USO
-
-En el inicio tendrás en la parte superior(navbar) las secciones para buscar en la base de datos los socios, deportes y eventos agregados.
-Y en la parte inferior tendrás la oportunidad de agregar los mismos mediante los formularios creados con botones indicados para cada sección.
-
-Tambien Accede al panel de administración en http://localhost:8000/admin/ con el superusuario que podes crear.
-
-Agrega, edita y elimina socios, eventos deportivos y deportes a través del panel de administración.
-
-Visita las rutas definidas en urls.py para ver y agregar información desde el sitio web público.
 
 
 
