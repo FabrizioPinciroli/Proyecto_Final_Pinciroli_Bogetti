@@ -1,13 +1,13 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-<div class="container px-4 px-lg-5">
+<div class="container mt-4 mb-4 px-4 px-lg-5">
     <!-- Heading Row-->
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
 
         <div class="col-lg-7">
             {% if noticia.imagen %}
-            <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="600" height="300">
+            <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" class="img-fluid w-100 h-auto">
             {% endif %}
         </div>
         <div class="col-lg-5">
