@@ -7,10 +7,8 @@ class Perfil(AbstractUser):
     fecha_nacimiento = models.DateField(null=True, blank=True)
     telefono = models.CharField(max_length=15, null=True)
     domicilio = models.CharField(max_length=25, null=True)
-    evento = models.OneToOneField(
-        Evento, on_delete=models.SET_NULL, blank=True, null=True
-    )
-    deporte = models.OneToOneField(
+    evento = models.ForeignKey(Evento, on_delete=models.SET_NULL, blank=True, null=True)
+    deporte = models.ForeignKey(
         Deporte, on_delete=models.SET_NULL, blank=True, null=True
     )
     avatar = models.ImageField(upload_to="avatares/", null=True, blank=True)

@@ -2,9 +2,8 @@
 
 {% block ContenidoQueCambia %}
 
-
+<div class="row mt-4 px-4 px-lg-5 gx-4 gx-lg-5 align-items-center mx-auto my-5">
 <h2>Iniciar Sesión</h2>
-<container>
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -20,8 +19,10 @@
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        <p>¿No tienes una cuenta?  <a href="{% url 'signup' %}" class="btn btn-secondary">Registrarse</a></p>
+       
+</div>
     </form>
 
-    <p>No tienes una cuenta? <a href="{% url 'signup' %}" class="btn btn-secondary">Registrarse</a></p>
-</container>
+    
 {% endblock ContenidoQueCambia %}

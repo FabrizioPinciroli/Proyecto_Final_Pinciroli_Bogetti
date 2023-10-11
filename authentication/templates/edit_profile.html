@@ -1,16 +1,15 @@
-{% extends "padre.html" %}
+{% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-<container>
-    <h2>Editar Perfil</h2>
-    <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"  class="btn btn-primary" >Guardar Cambios</button>
-    </form>
-    <br>
+<div class="row mt-4 px-4 px-lg-5 gx-4 gx-lg-5 align-items-center mx-auto my-5">
+<h2>Editar Perfil</h2>
+<form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit" class="btn btn-primary ">Guardar Cambios</button>
     <a href="{% url 'profile' %}"  class="btn btn-secondary">Volver al Perfil</a>
-    <br>
-    <br>
-</container>
-{% endblock %}
+</form>
+    
+</div>
+{% endblock ContenidoQueCambia %}
+

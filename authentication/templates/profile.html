@@ -1,18 +1,33 @@
 {% extends 'padre.html' %}
-
+{% load static %}
 {% block ContenidoQueCambia %}
-<container>
-    <h2>Perfil de {{ perfil.username }}</h2>
-    <ul>
-        <li><strong>Nombre completo:</strong> {{ perfil.first_name}} {{perfil.last_name}}</li>
-        <li><strong>Correo Electrónico:</strong> {{ perfil.email }}</li>
-        <li><strong>Fecha de Nacimiento:</strong> {{ perfil.fecha_nacimiento }}</li>
-        <li><strong>Dirección:</strong> {{ perfil.domicilio }}</li>
-        <li><strong>Número de Teléfono:</strong> {{ perfil.telefono }}</li>
-    </ul>
-    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Editar Perfil</a>
-    <a href="{% url 'change_password' %}"  class="btn btn-secondary">Cambiar Contraseña</a>
-    <br><br>
-
-</container>
-{% endblock %}
+<div class="row mt-4 px-4 px-lg-5 gx-4 gx-lg-5 align-items-center mx-auto my-5">
+            <div class="col-lg-7">
+                {% if user.avatar %}
+                    <img src="{{ user.avatar.url }}" alt="{{ user.username }} Avatar" width="500" height="300">
+                {% else %}
+                    <img src="{% static 'default_avatar.png' %}" width="500" height="300" alt="Avatar por defecto">
+                {% endif %}
+            </div>
+            <div class="col-lg-5">
+                <h2>Perfil de {{ perfil.username }}</h2>
+                <ul>
+                    <li><strong>Nombre completo:</strong> {{ perfil.first_name}} {{perfil.last_name}}</li>
+                    <li><strong>Correo Electrónico:</strong> {{ perfil.email }}</li>
+                    <li><strong>Fecha de Nacimiento:</strong> {{ perfil.fecha_nacimiento }}</li>
+                    <li><strong>Dirección:</strong> {{ perfil.domicilio }}</li>
+                    <li><strong>Número de Teléfono:</strong> {{ perfil.telefono }}</li>
+                    {% if perfil.deporte %}
+                    <li><strong>Deporte:</strong> {{ perfil.deporte }}</li>
+                    {% else %}
+                    {% endif %}
+                    {% if perfil.evento %}
+                    <li><strong>Evento reservado:</strong> {{ perfil.evento }}</li>
+                    {% else %}
+                    {% endif %}
+                </ul>
+                <a href="{% url 'edit_profile' %}" class="btn btn-primary">Editar Perfil</a>
+                <a href="{% url 'change_password' %}"  class="btn btn-secondary">Cambiar Contraseña</a>
+            </div>
+</div>
+{% endblock ContenidoQueCambia %}
