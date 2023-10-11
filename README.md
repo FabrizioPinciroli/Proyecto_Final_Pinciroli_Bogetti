@@ -26,9 +26,3 @@ Falta
 Falta
 
 
-- Ver los deportes ofrecidos el club.
-- Si sos admin o parte del staff podes agregar, editar o eliminar nuevas noticias, eventos deportivos y deportes a través del panel de administración.
-
-
-
-
