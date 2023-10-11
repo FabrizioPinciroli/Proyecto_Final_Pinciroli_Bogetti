@@ -94,5 +94,5 @@ def change_password(req):
     return render(req, "change_password.html", {"form": form})
 
 
-def pagina_no_encontrada(request):
-    return render(request, "404.html")
+def Error404(req, exception):
+    return render(req, "Error404.html", {}, status=404)

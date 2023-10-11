@@ -1,22 +1,31 @@
 {% extends 'padre.html' %}
 
 {% block ContenidoQueCambia %}
-
-<ul>
-
-    {% for deporte in deportes %}
-    <li> {{deporte}} </li>
-    <div style="display: flex; column-gap: 5px;">
-
-        <form action="{% url 'eliminarDeportes' deporte.id %}" method="post">{% csrf_token %}
-            <button type="submit"> Eliminar </button>
-        </form>
-        <button>
-            <a href="{% url 'actualizarDeportes' deporte.id %}"> Editar</a>
-        </button>
+<div class="container mt-4 mb-4">
+    <div class="row">
+        {% for deporte in deportes %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ deporte.nombre }}</h3>
+                        <p class="card-text">{{ deporte.categoria }}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a class="btn btn-primary btn-block" href="{% url 'detallarDeportes' pk=deporte.pk %}">Ver más</a>
+                        {% if user.is_staff %}
+                            <a class="btn btn-secondary btn-block" href="{% url 'actualizarDeportes' deporte.id %}">Editar</a>
+                            <form action="{% url 'eliminarDeportes' deporte.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-secondary btn-block">Eliminar</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No hay deportes disponibles.</p>
+        {% endfor %}
     </div>
-    {% endfor %}
-
-</ul>
+</div>
 
 {% endblock ContenidoQueCambia %}

@@ -37,16 +37,6 @@ class NoticiaCreate(LoginRequiredMixin, CreateView):
     form_class = NoticiaFormulario
     success_url = reverse_lazy("Inicio")
 
-    def form_valid(self, form):
-        if form.is_valid():
-            form.save()
-        return super().form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["form"] = self.form_class()
-        return context
-
 
 class NoticiaUpdate(LoginRequiredMixin, UpdateView):
     model = Noticia

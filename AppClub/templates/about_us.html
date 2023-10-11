@@ -2,23 +2,25 @@
 {% load static %}
 
 {% block ContenidoQueCambia %}
-{% block ContenidoNuevo %}
-<div class="row gx-4 gx-lg-3 align-items-center my-5">
-    <div class="col-lg-5 mx-auto">
-        <img class="img-fluid rounded mb-2 mb-lg-0" src='{% static "imagenes/santiago.jpg" %}' alt="Nueva Imagen"
-            width="400" height="200" />
-    </div>
-    <div class="col-lg-9 mx-auto">
-        <p class="mb-3">Somos Fabrizio y Santiago, tenemos 29 y 28 años y somos de la ciudad de Rosario. Nos anotamos
-            juntos al curso de Python en Coderhouse. Decidimos trabajar en conjunto en este proyecto con la idea de
-            crear
-            una sede
-            virtual para un Club. Esta web cuenta con una página de inicio la cual le da la bienvenida al usuario y
+<div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+
+            <div class="col-lg-7">
+                <img class="img-fluid rounded mb-4 mb-lg-0"
+                    src='https://th.bing.com/th/id/R.de5332d78d30002465b6833e0306f414?rik=WKZUzATy8fLkDA&pid=ImgRaw&r=0'
+                    alt="Imagen Principal" width="500" height="300" />
+            </div>
+            <div class="col-lg-5">
+                <h2 class="font-weight-light">Sobre Nosotros</h2>
+                <p>Somos Fabrizio y Santiago, tenemos 29 y 28 años y somos de la ciudad de Rosario. Nos anotamos
+            juntos al curso de Python en Coderhouse.</p>
+            <h2 class="font-weight-light">Nuestro Proyecto</h2>
+                <p>Decidimos trabajar en conjunto en este proyecto con la idea de crear una sede virtual para un Club. Esta web cuenta con una página de inicio la cual le da la bienvenida al usuario y
             contiene un poco de información sobre el club. Desde la barra de navegación podemos acceder a las secciones
             "Noticias", "Deportes" y "Eventos". Estos pueden ser creados, editados y eliminados por usuarios que sean
-            parte del Staff. Además cuenta con una sección "Mi perfil", en la cual el socio puede editar sus datos y
+            parte del Staff. Además cuenta con una sección "Mi Perfil", en la cual el socio puede editar sus datos y
             visualizar sus reservas para los distintos eventos.</p>
-    </div>
-</div>
-{% endblock ContenidoNuevo %}
+            <br><br><br>
+        </div>
 {% endblock ContenidoQueCambia %}
