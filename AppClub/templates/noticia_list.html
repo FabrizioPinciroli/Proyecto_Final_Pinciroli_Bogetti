@@ -4,31 +4,32 @@
 <div class="container mt-4 mb-4">
     <div class="row">
         {% for noticia in noticias %}
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title">{{ noticia.titulo }}</h3>
-                        <a href="{% url 'detallarNoticias' pk=noticia.pk %}">
-                         {% if noticia.imagen %}
-                            <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="150">
-                         {% endif %}
-                        </a>
-                        <p class="card-text">{{ noticia.pie_de_foto }}</p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <a class="btn btn-primary btn-block" href="{% url 'detallarNoticias' pk=noticia.pk %}">Ver más</a>
-                        {% if user.is_staff %}
-                            <a class="btn btn-secondary btn-block" href="{% url 'actualizarNoticias' pk=noticia.pk %}">Editar</a>
-                            <form action="{% url 'eliminarNoticias' pk=noticia.pk %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-secondary btn-block">Eliminar</button>
-                            </form>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">{{ noticia.titulo }}</h3>
+                    <a href="{% url 'detallarNoticias' pk=noticia.pk %}">
+                        {% if noticia.imagen %}
+                        <img src="{{ noticia.imagen.url }}" alt="Imagen de Noticia" width="400" height="200">
                         {% endif %}
-                    </div>
+                    </a>
+                    <p class="card-text">{{ noticia.pie_de_foto }}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a class="btn btn-primary btn-block" href="{% url 'detallarNoticias' pk=noticia.pk %}">Ver más</a>
+                    {% if user.is_staff %}
+                    <a class="btn btn-secondary btn-block"
+                        href="{% url 'actualizarNoticias' pk=noticia.pk %}">Editar</a>
+                    <form action="{% url 'eliminarNoticias' pk=noticia.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary btn-block">Eliminar</button>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
+        </div>
         {% empty %}
-            <p>No hay noticias disponibles.</p>
+        <p>No hay noticias disponibles.</p>
         {% endfor %}
     </div>
 </div>
