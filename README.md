@@ -7,8 +7,7 @@
 1.0
 
 # Nombre del proyecto:
-## Sede Virtual del Club Atletico Central Cordoba de Rosario
-
+ Sede Virtual del Club Atletico Central Cordoba de Rosario
 
 ## Descripción del Proyecto
 
