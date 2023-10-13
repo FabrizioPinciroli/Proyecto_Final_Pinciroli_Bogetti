@@ -15,7 +15,7 @@ class Noticia(models.Model):
     subtitulo = models.CharField(max_length=100)
     fecha = models.DateField()
     tema = models.CharField(max_length=100)
-    desarrollo = models.TextField(max_length=300)
+    desarrollo = models.TextField(max_length=600)
     imagen = models.ImageField(upload_to="noticias", null=True, blank=True)
     pie_de_foto = models.CharField(max_length=100)
     autor = models.CharField(max_length=100, null=True)
