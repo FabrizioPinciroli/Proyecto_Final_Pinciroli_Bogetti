@@ -18,6 +18,7 @@ class Noticia(models.Model):
     desarrollo = models.TextField(max_length=300)
     imagen = models.ImageField(upload_to="noticias", null=True, blank=True)
     pie_de_foto = models.CharField(max_length=100)
+    autor = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return f"{self.titulo}"
