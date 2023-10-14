@@ -1,5 +1,5 @@
 {% extends 'padre.html' %}
-
+{% load static %}
 {% block ContenidoQueCambia %}
 <div class="row mt-4 px-4 px-lg-5 gx-4 gx-lg-5 align-items-center mx-auto my-5">
     <div class="col-lg-7">
@@ -40,9 +40,11 @@
     {% for comentario in noticia.comentario_set.all %}
        <div class="comentario"> 
        {% if comentario.autor.avatar %}
-            <img src="{{ comentario.autor.avatar.url }}"style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;" alt="Avatar" class="avatar-img">
+        <img src="{{ comentario.autor.avatar.url }}"style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;" alt="Avatar" class="avatar-img">
+        {% else %}
+        <img src="{% static 'default_avatar.png' %}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;"height='50px' alt="Avatar por defecto" class="avatar-img">
         {% endif %}
-           <strong>{{ comentario.autor }}</strong>
+           <strong>{{ comentario.autor.first_name }} {{ comentario.autor.last_name }}</strong>
            <p>{{ comentario.comentario }}</p>
            <p class="fecha">{{ comentario.fecha }}</p>
        </div>
