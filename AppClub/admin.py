@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Noticia, Evento, Deporte, Contacto
+from .models import Noticia, Evento, Deporte, Contacto, Comentario
 
 
 class NoticiaAdmin(admin.ModelAdmin):
@@ -22,7 +22,13 @@ class ContactoAdmin(admin.ModelAdmin):
     list_filter = ["avisos"]
 
 
+class ComentarioAdmin(admin.ModelAdmin):
+    list_display = ["autor", "noticia", "fecha"]
+    list_filter = ["autor", "noticia"]
+
+
 admin.site.register(Noticia, NoticiaAdmin)
 admin.site.register(Evento, EventoAdmin)
 admin.site.register(Deporte, DeporteAdmin)
 admin.site.register(Contacto, ContactoAdmin)
+admin.site.register(Comentario, ComentarioAdmin)

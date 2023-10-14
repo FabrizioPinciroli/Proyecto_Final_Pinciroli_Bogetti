@@ -16,5 +16,36 @@
         <p>{{noticia.desarrollo}}</p>
         <p>Publicado el día {{noticia.fecha}} por <strong>{{noticia.autor}}</strong> </p>
     </div>
+ {% if user.is_authenticated %}
+      <div class="row mt-4">
+        <div class="col-md-8">
+        
+          <h2>Deja un comentario</h2>
+          <form method="post" action="{% url 'CrearComentario' noticia.id %}">
+    {% csrf_token %}
+    {{ comentario_form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Comentar</button>
+</form>
+        </div>
+      </div>
+    {% else %}
+      <div class="row mt-4">
+        <div class="col-md-8">
+        <p>Inicia sesión para dejar un comentario. <a class="btn btn-primary btn-block" href="{% url 'login' %}">Inicia Sesión</a></p> 
+
+        </div>
+      </div>
+    {% endif %}
+    <h3>Comentarios</h3>
+    {% for comentario in noticia.comentario_set.all %}
+       <div class="comentario"> 
+       {% if comentario.autor.avatar %}
+            <img src="{{ comentario.autor.avatar.url }}"style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;" alt="Avatar" class="avatar-img">
+        {% endif %}
+           <strong>{{ comentario.autor }}</strong>
+           <p>{{ comentario.comentario }}</p>
+           <p class="fecha">{{ comentario.fecha }}</p>
+       </div>
+    {% endfor %}
 </div>
 {% endblock ContenidoQueCambia %}

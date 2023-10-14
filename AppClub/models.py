@@ -51,3 +51,18 @@ class Contacto(models.Model):
 
     def __str__(self):
         return f"{self.nombre}"
+
+
+class Comentario(models.Model):
+    from authentication.models import Perfil
+
+    autor = models.ForeignKey(Perfil, on_delete=models.CASCADE)
+    noticia = models.ForeignKey(Noticia, on_delete=models.CASCADE)
+    comentario = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comentario de {self.autor.username} en {self.noticia.titulo}"
+
+    class Meta:
+        ordering = ["-fecha"]

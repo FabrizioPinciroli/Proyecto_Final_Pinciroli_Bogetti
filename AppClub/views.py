@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
-from django.views.generic import ListView
+from django.views.generic import ListView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
-from .models import Noticia, Deporte, Evento
-from .forms import NoticiaFormulario, ContactoFormulario
+from .models import Noticia, Deporte, Evento, Comentario
+from .forms import NoticiaFormulario, ContactoFormulario, ComentarioForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -43,6 +43,12 @@ class NoticiaDetail(DetailView):
     model = Noticia
     template_name = "noticia_detail.html"
     context_object_name = "noticia"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comentarios"] = Comentario.objects.filter(noticia=self.object)
+        context["comentario_form"] = ComentarioForm()  # Agrega esta línea
+        return context
 
 
 class NoticiaCreate(LoginRequiredMixin, CreateView):
@@ -139,3 +145,15 @@ class EventoDelete(LoginRequiredMixin, DeleteView):
     model = Evento
     template_name = "evento_delete.html"
     success_url = reverse_lazy("listarEventos")
+
+
+class CrearComentario(View):
+    def post(self, req, noticia_id):
+        noticia = Noticia.objects.get(pk=noticia_id)
+        form = ComentarioForm(req.POST)
+        if form.is_valid():
+            comentario = form.cleaned_data["comentario"]
+            Comentario.objects.create(
+                noticia=noticia, autor=req.user, comentario=comentario
+            )
+        return redirect("detallarNoticias", pk=noticia_id)
