@@ -9,11 +9,15 @@
         <p><strong style="text-transform: uppercase;">{{deporte.categoria}}</strong></p>
             <h2 class="font-weight-light">{{deporte.nombre}}</h2>
             <p>{{deporte.descripcion}}</p>
+        {% if user.is_authenticated %}
         <form method="post" action="{% url 'agregar_deporte' %}">
             {% csrf_token %}
             <input type="hidden" name="deporte" value="{{deporte.id}}">
             <button type="submit" class="btn btn-primary btn-block">Anotarme</button>
         </form>
+        {% else %}
+        <p>¿Quieres Anotarte? <a class="btn btn-primary btn-block" class="nav-link btn-primary" href="{% url 'login' %}">Inicia Sesión</a></p> 
+        {% endif %}
         </div>
 </div>
 {% endblock ContenidoQueCambia %}

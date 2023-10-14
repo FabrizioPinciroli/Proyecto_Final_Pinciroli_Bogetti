@@ -10,13 +10,15 @@
             <h2 class="font-weight-light">{{evento.titulo}}</h2>
             <h6>Evento programado para el día {{evento.fecha}}</h6>
             <p>{{evento.descripcion}}</p>
-
-            <form method="post" action="{% url 'agregar_evento' %}">
+{% if user.is_authenticated %}
+        <form method="post" action="{% url 'agregar_evento' %}">
             {% csrf_token %}
             <input type="hidden" name="evento" value="{{evento.id}}">
             <button type="submit" class="btn btn-primary btn-block">Reservar</button>
         </form>
-
+        {% else %}
+        <p>¿Quieres Reservar? <a class="btn btn-primary btn-block" class="nav-link btn-primary" href="{% url 'login' %}">Inicia Sesión</a></p> 
+        {% endif %}
         </div>
 </div>
 {% endblock ContenidoQueCambia %}
